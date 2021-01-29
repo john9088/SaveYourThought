@@ -6,13 +6,13 @@
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:weightSum="5"
         android:id="@+id/root_layout"
-        android:background="#FAD0C9"
+        android:background="#666"
         android:orientation="vertical"
         tools:context=".MainActivity">
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#FAD0C9"
+            android:background="#666"
             android:layout_weight="1">
         <ImageView
                 android:id="@+id/img_main"
@@ -47,129 +47,5 @@
     </RelativeLayout>
 
 </LinearLayout>
-    <!--    <GridLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:background="@drawable/background"-->
-<!--            android:rowCount="2"-->
-<!--            android:columnCount="2"-->
-<!--            android:layout_weight="4">-->
-
-
-
-<!--            <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="10dp"-->
-<!--                    android:layout_height="10dp"-->
-<!--                    android:layout_columnWeight=" 1"-->
-<!--                    app:cardElevation="4dp"-->
-<!--                    app:cardCornerRadius="45dp"-->
-<!--                    app:cardBackgroundColor="#2D2926"-->
-<!--                    android:layout_margin="10dp"-->
-<!--                    android:layout_rowWeight="1">-->
-
-<!--                    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">-->
-<!--                        <TextView-->
-<!--                                android:id="@+id/tv_topic1"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:textColor="#fff"-->
-<!--                                android:text="Write your\nThoughts Here"-->
-<!--                                android:textStyle="bold"-->
-<!--                                android:textAlignment="center"-->
-<!--                                android:layout_centerInParent="true"-->
-<!--                                android:fontFamily="sans-serif-black"-->
-<!--                                android:textSize="20dp"-->
-
-<!--                        />-->
-<!--                    </RelativeLayout>-->
-
-<!--            </androidx.cardview.widget.CardView>-->
-
-<!--        <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="10dp"-->
-<!--                android:layout_height="10dp"-->
-<!--                android:layout_columnWeight=" 1"-->
-<!--                app:cardElevation="4dp"-->
-<!--                app:cardCornerRadius="45dp"-->
-<!--                app:cardBackgroundColor="#2D2926"-->
-<!--                android:layout_margin="10dp"-->
-<!--                android:layout_rowWeight="1">-->
-
-<!--            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">-->
-<!--                <TextView-->
-<!--                        android:id="@+id/tv_topic2"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:textColor="#fff"-->
-<!--                        android:text="Write your\nThoughts Here"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:layout_centerInParent="true"-->
-<!--                        android:fontFamily="sans-serif-black"-->
-<!--                        android:textSize="20dp"-->
-
-<!--                />-->
-<!--            </RelativeLayout>-->
-
-<!--        </androidx.cardview.widget.CardView>-->
-
-<!--        <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="10dp"-->
-<!--                android:layout_height="10dp"-->
-<!--                android:layout_columnWeight=" 1"-->
-<!--                app:cardElevation="4dp"-->
-<!--                app:cardBackgroundColor="#2D2926"-->
-<!--                android:layout_margin="10dp"-->
-<!--                app:cardCornerRadius="45dp"-->
-<!--                android:layout_rowWeight="1">-->
-
-<!--            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">-->
-<!--                <TextView-->
-<!--                        android:id="@+id/tv_topic3"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:textColor="#fff"-->
-<!--                        android:text="Write your\nThoughts Here"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:layout_centerInParent="true"-->
-<!--                        android:fontFamily="sans-serif-black"-->
-<!--                        android:textSize="20dp"-->
-
-<!--                />-->
-
-<!--            </RelativeLayout>-->
-
-<!--        </androidx.cardview.widget.CardView>-->
-
-<!--        <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="10dp"-->
-<!--                android:layout_height="10dp"-->
-<!--                android:layout_columnWeight=" 1"-->
-<!--                app:cardElevation="4dp"-->
-<!--                app:cardBackgroundColor="#2D2926"-->
-<!--                android:layout_margin="10dp"-->
-<!--                app:cardCornerRadius="45dp"-->
-<!--                android:layout_rowWeight="1">-->
-
-<!--            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">-->
-<!--                <TextView-->
-<!--                        android:id="@+id/tv_topic4"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:textColor="#fff"-->
-<!--                        android:text="Write your\nThoughts Here"-->
-<!--                        android:textStyle="bold"-->
-<!--                        android:textAlignment="center"-->
-<!--                        android:layout_centerInParent="true"-->
-<!--                        android:fontFamily="sans-serif-black"-->
-<!--                        android:textSize="20dp"-->
-
-<!--                />-->
-
-<!--            </RelativeLayout>-->
-
-<!--        </androidx.cardview.widget.CardView>-->
-<!--    </GridLayout>-->
 
 

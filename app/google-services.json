@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "413301973423",
+    "project_id": "saveyourthoughts-8a084",
+    "storage_bucket": "saveyourthoughts-8a084.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413301973423:android:5eb7d4449f3be23dde8f5a",
+        "android_client_info": {
+          "package_name": "com.example.gridlayouttut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413301973423-ke1383srjgitptpdfn5p216314tue0i5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAVfO9kDauxBzIB8G42y9T1dITlWhd9Ro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413301973423-ke1383srjgitptpdfn5p216314tue0i5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
