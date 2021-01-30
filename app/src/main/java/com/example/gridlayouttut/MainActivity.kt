@@ -1,38 +1,36 @@
 package com.example.gridlayouttut
 
 import android.content.Intent
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.pop_up.view.*
 
 
 class MainActivity : AppCompatActivity(){
-    var userList = mutableListOf<String>()
-    private val dbRef = FirebaseDatabase.getInstance().getReference("Thoughts")
-    private val thoughtID = dbRef.push().key
-    val thoughts = thoughtID?.let { it1 -> ModelThoughts(it1,userList) }
+    var userList = mutableMapOf<Int,String>()
+
+    private lateinit var rs: Cursor
+    private lateinit var db:SQLiteDatabase
+    private lateinit var helper:ModelThoughts
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        helper = ModelThoughts(applicationContext)
+        db = helper.readableDatabase
+
         rv_main.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
-        val mAuth = FirebaseAuth.getInstance()
-        mAuth.createUserWithEmailAndPassword("jasonbritto8085@gmail.com","helloworld12")
-            .addOnCompleteListener{
-            if(!it.isSuccessful) return@addOnCompleteListener
-            else
-                Log.d("MAIN","Successfully Created user with ID:${it.result?.user?.uid}")
-            }
-            .addOnFailureListener{
-                Log.d("MAIN","Failed to create User:${it.message}")
-            }
+
+        //addDataInUserList()
+        populateRecyclerView()
 
         img_main.setOnClickListener{
 
@@ -57,15 +55,7 @@ class MainActivity : AppCompatActivity(){
                 if(title ==  "null" || title.isEmpty())
                     Toast.makeText(this, "Enter Title", Toast.LENGTH_LONG).show()
                 else{
-                    userList.add(title)
-                    thoughts?.title = userList
-
-                    if (thoughtID != null) {
-                        dbRef.child(thoughtID).setValue(thoughts).addOnCanceledListener {
-                            Toast.makeText(this, "Data added", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
+                    helper.insertData(db,"THOUGHTS","THOUGHTS_NAME",title)
                     populateRecyclerView()
                     alertBox.dismiss()
                 }
@@ -73,23 +63,39 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
+    private fun addDataInUserList(){
+        rs = db.rawQuery("SELECT * FROM THOUGHTS", null)
+        while (rs.moveToNext()){
+            if(!userList.contains(rs.getString(1)))
+                userList[rs.getInt(0)] = rs.getString(1)
+        }
+    }
 
     //To populate RecyclerView
     private fun populateRecyclerView(){
+        addDataInUserList()
         val mAdapter = MainAdapter(userList)
         rv_main.adapter = mAdapter
 
         mAdapter.setOnItemClickListner(object : MainAdapter.OnItemClickListner {
-            override fun onItemClick() {
+            override fun onItemClick(position: Int) {
                 val intent =  Intent(this@MainActivity,UserList::class.java)
+                intent.putExtra("EXTRA_SESSION_ID", position+1);
                 startActivity(intent)
             }
             override fun deleteItem(position: Int) {
-                userList.removeAt(position)
+                val dbKeys = userList.keys
+
+                val key = dbKeys.elementAt(position)
+                userList.remove(key)
+
+                if (helper.deleteData(db,"THOUGHTS","THOUGHT_ID",key))
+                    Log.d("SUCCESS:","Delete Successfull")
+                else
+                    Log.d("Error:","Delete Unsuccessfull")
                 mAdapter.notifyItemRemoved(position)
             }
         })
     }
-
 }
 

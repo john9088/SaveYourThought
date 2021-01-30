@@ -7,14 +7,15 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cards.view.*
 
-class MainAdapter(private val userList: MutableList<String>): RecyclerView.Adapter<MainAdapter.CustomViewHolder>() {
-    public var mListner:OnItemClickListner? = null
+class MainAdapter(private val userList: MutableMap<Int, String>): RecyclerView.Adapter<MainAdapter.CustomViewHolder>() {
+    var dbKeys = userList.keys
+    var mListner:OnItemClickListner? = null
+    private var mainActivity:MainActivity = MainActivity()
 
-    public interface OnItemClickListner{
-        fun onItemClick()
+    interface OnItemClickListner{
+        fun onItemClick(position: Int)
         fun deleteItem(position: Int)
     }
-
     fun setOnItemClickListner(listner:OnItemClickListner?){
         mListner = listner
     }
@@ -26,7 +27,8 @@ class MainAdapter(private val userList: MutableList<String>): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val title =  userList[position]
+        val title =  userList[dbKeys.elementAt(position)]
+
         holder.view.apply {
             tv_topic1.text = title
         }
@@ -42,7 +44,7 @@ class MainAdapter(private val userList: MutableList<String>): RecyclerView.Adapt
                 if(mListner != null){
                     val ptr:Int = adapterPosition
                     if(ptr != RecyclerView.NO_POSITION){
-                            mListner.onItemClick()
+                            mListner.onItemClick(ptr)
                     }
                 }
             })
