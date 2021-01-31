@@ -1,4 +1,4 @@
-package com.example.gridlayouttut
+package com.jasonbritto.simplyinfopad
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

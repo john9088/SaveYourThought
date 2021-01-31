@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">GridLayoutTut</string>
+    <string name="app_name">Simplyinfopad</string>
     <string name="grid_layout">Grid Layout</string>
     <string name="todo">TODO</string>
     <string name="smiley_text">&#x1F601;</string>
+    <string name="enter_title_pop_up">Enter a Title:</string>
+    <string name="main_enter_title"><![CDATA[ Save everything<br>that\'s important to you by<br><b><font color=#ff686b>Clicking</font></b> here]]></string>
+    <string name="user_list_add_thoughts">Click here to add</string>
+    <string name="hello">Hello</string>
+    <string name="delete">Delete</string>
 </resources>

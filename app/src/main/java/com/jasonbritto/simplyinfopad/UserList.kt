@@ -1,7 +1,9 @@
-package com.example.gridlayouttut
+package com.jasonbritto.simplyinfopad
 
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +21,7 @@ class UserList : AppCompatActivity() {
     private lateinit var rs: Cursor
     private lateinit var db: SQLiteDatabase
     private var thoughtID: Int = 0
+    private var thoughtTitle:String = ""
     var dbKeys = userListThoughts.keys
     lateinit var alertBox:AlertDialog
     private lateinit var helper:ModelThoughts
@@ -28,15 +31,17 @@ class UserList : AppCompatActivity() {
         setContentView(R.layout.activity_user_list)
 
         thoughtID = intent.getIntExtra("EXTRA_THOUGHT_ID",0);
+        thoughtTitle = intent.getStringExtra("EXTRA_THOUGHT_NAME").toString();
 
         helper = ModelThoughts(applicationContext)
         db = helper.readableDatabase
 
         rv_userList.layoutManager = GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false)
+        tv_thought_title.text = "\"" +thoughtTitle + "\""
 
         populateUserList()
 
-        img_addThoughts.setOnClickListener{
+        rv_userList_add.setOnClickListener{
             val view:View = initializeAlertBox()
             implementButtonFunctions(view,false)
         }
@@ -109,9 +114,9 @@ class UserList : AppCompatActivity() {
         val view = layoutInflater.inflate(R.layout.input_thoughts_pop_up, null)
         val dialogue = AlertDialog.Builder(this@UserList)
             .setView(view)
-            .setTitle("Enter your thoughts")
 
         alertBox = dialogue.create()
+        alertBox.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         return view
     }
 

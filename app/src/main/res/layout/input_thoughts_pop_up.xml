@@ -2,24 +2,29 @@
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:background="@drawable/alertbox_design"
         android:layout_height="wrap_content">
 
     <EditText
             android:id="@+id/et_addThoughts"
             android:layout_width="fill_parent"
-            android:layout_height="200dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="100dp"
+            android:fontFamily="sans-serif-condensed-medium"
             android:scrollbars="vertical"
             android:textCursorDrawable="@drawable/edittext_design"
-            android:hint="First Name"
-            android:textSize="20sp"
+            android:hint="Type"
+            android:textSize="22sp"
     />
     <Button
             android:id="@+id/btn_submitThoughts"
             android:layout_marginLeft="10dp"
             android:layout_below="@id/et_addThoughts"
             android:layout_width="wrap_content"
+            android:background="@drawable/button_design"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="Add"
+            android:textColor="#fff"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"/>
@@ -31,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit"
+            android:background="@drawable/button_design"
             android:visibility="gone"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
@@ -41,9 +47,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:background="@drawable/button_design"
             android:layout_alignEnd="@id/et_addThoughts"
             android:layout_below="@id/et_addThoughts"
             android:layout_marginBottom="8dp"
+            android:textColor="#fff"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Cancel"/>

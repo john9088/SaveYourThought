@@ -1,4 +1,4 @@
-package com.example.gridlayouttut
+package com.jasonbritto.simplyinfopad
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,9 +1,11 @@
-package com.example.gridlayouttut
+package com.jasonbritto.simplyinfopad
 
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -13,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.pop_up.view.*
 
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity(){
     var userList = mutableMapOf<Int,String>()
 
@@ -29,8 +32,10 @@ class MainActivity : AppCompatActivity(){
 
         rv_main.layoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
 
-        //addDataInUserList()
         populateRecyclerView()
+
+        var redString = resources.getString(R.string.main_enter_title)
+        img_main.text = Html.fromHtml(redString)
 
         img_main.setOnClickListener{
 
@@ -40,6 +45,7 @@ class MainActivity : AppCompatActivity(){
             dialogue.setView(view)
 
             val alertBox = dialogue.create()
+            alertBox.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
             alertBox.show()
 
             val buttonPopup = view.findViewById<Button>(R.id.buttonCancel)
@@ -84,6 +90,7 @@ class MainActivity : AppCompatActivity(){
                 val key = dbKeys.elementAt(position)
                 val intent =  Intent(this@MainActivity,UserList::class.java)
                 intent.putExtra("EXTRA_THOUGHT_ID", key);
+                intent.putExtra("EXTRA_THOUGHT_NAME", userList[key]);
                 startActivity(intent)
             }
             override fun deleteItem(position: Int) {
@@ -92,7 +99,7 @@ class MainActivity : AppCompatActivity(){
                 val key = dbKeys.elementAt(position)
                 userList.remove(key)
 
-                if (helper.deleteData(db,"THOUGHTS","THOUGHT_ID",key))
+                if (helper.deleteData(db,"THOUGHTS","THOUGHT_ID",key) and helper.deleteData(db,"THOUGHTS_LIST","THOUGHT_ID",key))
                     Log.d("SUCCESS:","Delete Successfull")
                 else
                     Log.d("Error:","Delete Unsuccessfull")

@@ -33,7 +33,7 @@
                 android:textSize="15dp"
                 android:elevation="10dp"
                 android:textColor="#ffffff"
-                android:background="#84dcc6"
+                android:background="@drawable/button_design"
                 android:text="Remove"
                 app:layout_constraintTop_toBottomOf="@+id/et_userThoughts"
                 app:layout_constraintEnd_toEndOf="parent"

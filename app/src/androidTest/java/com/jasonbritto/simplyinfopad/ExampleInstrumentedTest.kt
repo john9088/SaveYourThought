@@ -1,4 +1,4 @@
-package com.example.gridlayouttut
+package com.jasonbritto.simplyinfopad
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
