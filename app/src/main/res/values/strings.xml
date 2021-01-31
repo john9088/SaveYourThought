@@ -2,4 +2,5 @@
     <string name="app_name">GridLayoutTut</string>
     <string name="grid_layout">Grid Layout</string>
     <string name="todo">TODO</string>
+    <string name="smiley_text">&#x1F601;</string>
 </resources>

@@ -6,12 +6,12 @@
 
     <EditText
             android:id="@+id/et_addThoughts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:scrollbars="vertical"
+            android:textCursorDrawable="@drawable/edittext_design"
             android:hint="First Name"
-            android:lines="2"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="20dp"
+            android:textSize="20sp"
     />
     <Button
             android:id="@+id/btn_submitThoughts"

@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="wrap_content">
 
-    <TextView
-            android:id="@+id/et_userThoughts"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:text="In the world filled with sheeps be the lion"
-            android:layout_margin="20dp"
-            android:background="@drawable/rounded_corner"
-            android:textSize="25dp"
-            android:padding="20dp"
-            android:textColor="#fff"
-            app:layout_constraintTop_toTopOf="parent"/>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@drawable/rounded_corner"
+                    android:layout_margin="10dp">
+
+
+        <TextView
+                android:id="@+id/et_userThoughts"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:text="In the world filled with sheeps be the lion"
+                android:textSize="25dp"
+                android:padding="10dp"
+                android:textColor="#fff"
+                tools:layout_editor_absoluteX="0dp"
+                android:layout_marginTop="4dp"/>
+        <Button
+                android:id="@+id/btn_deleteThoughtsFromList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_userThoughts"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:textSize="15dp"
+                android:elevation="10dp"
+                android:textColor="#ffffff"
+                android:background="#84dcc6"
+                android:text="Remove"
+                app:layout_constraintTop_toBottomOf="@+id/et_userThoughts"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

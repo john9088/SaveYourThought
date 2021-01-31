@@ -6,14 +6,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.user_thoughts.view.*
 
-class UserThoughtsAdapter(private val userListThoughts: MutableList<String>) :RecyclerView.Adapter<UserThoughtsAdapter.UserThoughtsHolder>() {
+class UserThoughtsAdapter(private val userListThoughts: MutableMap<Int, String>) :RecyclerView.Adapter<UserThoughtsAdapter.UserThoughtsHolder>() {
+    var dbKeys = userListThoughts.keys
+    class UserThoughtsHolder(val view: View, mListner: OnItemClickListner?, userListThoughts: MutableMap<Int, String>): RecyclerView.ViewHolder(view){
 
-    class UserThoughtsHolder(val view: View, mListner: OnItemClickListner?, userListThoughts: MutableList<String>): RecyclerView.ViewHolder(view){
         init{
             view.setOnClickListener {
                 val ptr: Int = adapterPosition
                 if (ptr != RecyclerView.NO_POSITION){
-                    mListner?.onItemClick(userListThoughts[ptr],ptr)
+                    mListner?.onItemClick(ptr)
+                }
+            }
+            view.btn_deleteThoughtsFromList.setOnClickListener{
+                val ptr: Int = adapterPosition
+                if (ptr != RecyclerView.NO_POSITION){
+                    mListner?.deleteItem(ptr)
                 }
             }
         }
@@ -21,7 +28,8 @@ class UserThoughtsAdapter(private val userListThoughts: MutableList<String>) :Re
     var mListner:OnItemClickListner?=null
 
     interface OnItemClickListner{
-        fun onItemClick(data:String,position: Int)
+        fun onItemClick(position: Int)
+        fun deleteItem(position: Int)
     }
 
     fun alterThoughts(data: String,position: Int){
@@ -39,10 +47,10 @@ class UserThoughtsAdapter(private val userListThoughts: MutableList<String>) :Re
     }
 
     override fun onBindViewHolder(holder: UserThoughtsHolder, position: Int) {
+        var thoughts: String? =  userListThoughts[dbKeys.elementAt(position)]
         holder.view.apply {
-            var thoughts:String = userListThoughts[position]
-            if(thoughts.length > 65)
-                thoughts = thoughts.substring(0,65)
+            if(thoughts!!.length > 100)
+                thoughts = thoughts?.substring(0,100)
             et_userThoughts.text = "$thoughts..."
         }
 

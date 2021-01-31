@@ -55,7 +55,8 @@ class MainActivity : AppCompatActivity(){
                 if(title ==  "null" || title.isEmpty())
                     Toast.makeText(this, "Enter Title", Toast.LENGTH_LONG).show()
                 else{
-                    helper.insertData(db,"THOUGHTS","THOUGHTS_NAME",title)
+                    val thoughtTitle = arrayOf<String>(title)
+                    helper.insertData(db,"THOUGHTS","THOUGHTS_NAME",thoughtTitle)
                     populateRecyclerView()
                     alertBox.dismiss()
                 }
@@ -79,8 +80,10 @@ class MainActivity : AppCompatActivity(){
 
         mAdapter.setOnItemClickListner(object : MainAdapter.OnItemClickListner {
             override fun onItemClick(position: Int) {
+                val dbKeys = userList.keys
+                val key = dbKeys.elementAt(position)
                 val intent =  Intent(this@MainActivity,UserList::class.java)
-                intent.putExtra("EXTRA_SESSION_ID", position+1);
+                intent.putExtra("EXTRA_THOUGHT_ID", key);
                 startActivity(intent)
             }
             override fun deleteItem(position: Int) {
